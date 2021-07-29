@@ -11,3 +11,7 @@ export async function getUsers (req: Request, res: Response) {
     res.sendStatus(500);
   }
 }
+
+export async function testing(req: Request, res: Response){
+  res.send("tudo ok!!!")
+}
