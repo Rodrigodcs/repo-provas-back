@@ -8,4 +8,7 @@ import Type from "../../src/entities/Type";
 
 export async function clearDatabase () {
   await getRepository(Major).delete({});
+  await getRepository(Test).delete({});
+  await getRepository(Teacher).delete({});
+  await getRepository(Course).delete({});
 }
