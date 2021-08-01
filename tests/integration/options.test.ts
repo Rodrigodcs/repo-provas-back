@@ -18,7 +18,7 @@ afterAll(async () => {
 });
 
 describe("GET /options/majors", () => {
-  it("should answer with text \"OK!\" and status 200", async () => {
+  it("should answer with status 200", async () => {
     const major = await createMajor();
 
     const response = await supertest(app).get("/options/majors");
@@ -36,8 +36,8 @@ describe("GET /options/majors", () => {
   });
 });
 
-describe("/options/majors/:id", () => {
-  it("should answer with text \"OK!\" and status 200", async () => {
+describe("GET /options/majors/:id", () => {
+  it("should answer with status 200", async () => {
     const major = await createMajor();
 
     const response = await supertest(app).get(`/options/majors/${major.id}`);
@@ -53,13 +53,12 @@ describe("/options/majors/:id", () => {
   });
 });
 
-describe("/options/courses/:id", () => {
-  it("should answer with text \"OK!\" and status 200", async () => {
+describe("GET /options/courses/:id", () => {
+  it("should answer with status 200", async () => {
     const course = await createCourse();
 
     const response = await supertest(app).get(`/options/courses/${course.id}`);
 
-    console.log(course)
     expect(response.body).toEqual(
       expect.objectContaining({
         name: course.name,

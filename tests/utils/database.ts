@@ -11,4 +11,5 @@ export async function clearDatabase () {
   await getRepository(Test).delete({});
   await getRepository(Teacher).delete({});
   await getRepository(Course).delete({});
+  await getRepository(Type).delete({});
 }

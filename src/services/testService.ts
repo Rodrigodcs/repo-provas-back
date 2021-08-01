@@ -18,7 +18,7 @@ export async function getTypes() {
   }
 
 export async function addNewTest(
-  testName: string,
+  testName:string,
   pdfLink:string,
   testType:number,
   courseId:number,

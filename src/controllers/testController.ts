@@ -52,10 +52,12 @@ export async function getTypes (req: Request, res: Response) {
 
 export async function postTest (req: Request, res: Response){
     try {
-        // const validation = testSchema.validate(req.body)
-        // if(validation.error){
-        //     return res.sendStatus(400)
-        // }
+        const validation = testSchema.validate(req.body)
+        console.log(req.body)
+        console.log(validation)
+        if(validation.error){
+            return res.sendStatus(400)
+        }
         const {testName,pdfLink,testType,courseId,teacherId}= req.body
         await testService.addNewTest(testName,pdfLink,testType,courseId,teacherId);
         return res.sendStatus(201)
@@ -65,10 +67,11 @@ export async function postTest (req: Request, res: Response){
     }
 }
 
-export const testSchema = joi.object({
-    testName: joi.string().required(),
-    testLink: joi.string().uri().required(),
+const testSchema = joi.object({
+    testName: joi.string().regex(/^(20)\d{2}(.)(1|2)$/).required(),
+    pdfLink: joi.string().uri().required(),
     testType: joi.number().required(),
     courseId: joi.number().required(),
     teacherId: joi.number().required()
 })
+
