@@ -31,9 +31,6 @@ export async function getTestsByCourse (req: Request, res: Response) {
         const tests = await testService.getTests();
         const courseTests = tests.filter(t=> {return t.course.id===courseId})
         res.send(courseTests)
-        // courseTests.length===0?
-        //     res.sendStatus(404):
-        //     res.send(courseTests)
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
@@ -53,11 +50,10 @@ export async function getTypes (req: Request, res: Response) {
 export async function postTest (req: Request, res: Response){
     try {
         const validation = testSchema.validate(req.body)
-        console.log(req.body)
-        console.log(validation)
         if(validation.error){
             return res.sendStatus(400)
         }
+        
         const {testName,pdfLink,testType,courseId,teacherId}= req.body
         await testService.addNewTest(testName,pdfLink,testType,courseId,teacherId);
         return res.sendStatus(201)
