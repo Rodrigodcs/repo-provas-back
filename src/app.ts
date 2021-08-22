@@ -22,7 +22,7 @@ app.get("/tests/course/:id",testController.getTestsByCourse)
 app.get("/tests/types",testController.getTypes)
 app.post("/test",testController.postTest)
 
-export async function init () {
+export async function init () { 
   await connectDatabase();
 }
 
