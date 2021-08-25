@@ -37,34 +37,33 @@ git clone https://github.com/Rodrigodcs/repo-provas-back
 ```bash
 npm i
 ```
-<!-- 4. Create a Database using the ``dump.sql`` file inside the ``dump`` folder by following these steps:
-    - 4.1 Open your terminal. **Important: the terminal must be opened in the same path as the ``dump.sql`` file is located.**
-    - 4.2 Access PostgreSQL using the command ``sudo su postgres`` and enter your password when prompted.
-    - 4.3 Next, type ``psql postgres`` and hit enter.
-    - 4.4 Create a database by typing ``CREATE DATABASE repoprovas;`` and hitting enter.
-    - 4.5 Type ``\q`` and hit enter.
-    - 4.6 Finally, type ```psql repoprovas < dump.sql``` and hit enter. Your database should be ready after this step.
-5. Set the environment variables by following these steps:
-    - 5.1 Create a ``.env`` file in the folder root
-    - 5.2 Copy the content of the ``.env.example`` into it
-    - 5.3 Set the ``DATABASE_URL`` in this format: "postgres://user:password@host:port/repoprovas"
-    - 5.4 Set the ``PORT`` for 4000 -->
-3. Also in root folder, run the back-end with
+3. Create a database in postgres called repoprovas
 ```bash
-npm start
+createdb -h localhost -p 5432 -U postgres repoprovas
 ```
-<!-- 8. Your server should be running now.
-9. After that, you can optionally test the project following these steps:
-    - 9.1 Open your terminal.
-    - 9.2 Access PostgreSQL using the command ``sudo su postgres`` and enter your password when prompted.
-    - 9.3 Next, type ``psql postgres`` and hit enter.
-    - 9.4 Create a test database by typing ``CREATE DATABASE repoprovas_test TEMPLATE repoprovas;`` and hitting enter. Your database test should be ready after this step.
-    - 9.5 Set the enviroment variable following the step 5 again, with the following changes:
-      - 9.5.1 The file must be called ``.env.test``
-      - 9.5.2 The ``DATABASE_URL`` must be in this format: "postgres://user:password@host:port/repoprovas_test" -->
+4. Build project
+```bash
+$ npm run build
+```
+5. Run typeorm migrations to create database schema
+```bash
+npm run typeorm migration:run
+```
 
-4. In your terminal, go to the root folder and run the tests with:
+## Running in dev mode
+6. In the project folder, create an .env file following the template in .env.example
+7. Run the app
 ```bash
-npm run test
+$ npm run dev 
 ```
-5. Follow instructions to run front-end at https://github.com/Rodrigodcs/repo-provas-front
+8. Follow instructions to run front-end at https://github.com/Rodrigodcs/repo-provas-front
+
+## Runing tests
+6. Create another database repoprovas_test using repoprovas template previously created
+7. In the project folder, create an .env.test file following the template in .env.example
+8. Run tests
+```bash
+$ npm run test
+```
+
+
