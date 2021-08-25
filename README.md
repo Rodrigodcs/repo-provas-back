@@ -43,7 +43,7 @@ createdb -h localhost -p 5432 -U postgres repoprovas
 ```
 4. Build project
 ```bash
-$ npm run build
+npm run build
 ```
 5. Run typeorm migrations to create database schema
 ```bash
@@ -54,7 +54,7 @@ npm run typeorm migration:run
 6. In the project folder, create an .env file following the template in .env.example
 7. Run the app
 ```bash
-$ npm run dev 
+npm run dev 
 ```
 8. Follow instructions to run front-end at https://github.com/Rodrigodcs/repo-provas-front
 
@@ -63,7 +63,7 @@ $ npm run dev
 7. In the project folder, create an .env.test file following the template in .env.example
 8. Run tests
 ```bash
-$ npm run test
+npm run test
 ```
 
 
